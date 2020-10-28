@@ -6,10 +6,11 @@ export default class Scene2 extends Phaser.Scene {
     this.isIdle = true;
     this.hardLevel = 0.1;
     this.score = 0;
-    this.bestScore =
-      localStorage.getItem("score") != undefined
-        ? localStorage.getItem("score")
-        : 0;
+    if (localStorage.getItem("score") == undefined) {
+      this.bestScore = 0;
+    } else {
+      this.bestScore = localStorage.getItem("score");
+    }
   }
 
   create() {
