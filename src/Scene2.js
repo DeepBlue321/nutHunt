@@ -21,15 +21,13 @@ export default class Scene2 extends Phaser.Scene {
     this.player.anims.play("rightRun");
 
     this.timer = setInterval(() => {
-      let random = Phaser.Math.FloatBetween(0, 1);
-
-      if (random < this.hardLevel) {
+      if (Phaser.Math.FloatBetween(0, 1) < this.hardLevel) {
         this.makeSpike();
       }
-      if (random < 0.3) {
+      if (Phaser.Math.FloatBetween(0, 1) < 0.3) {
         this.makePlatform();
       }
-      if (random < 0.3) {
+      if (Phaser.Math.FloatBetween(0, 1) < 0.3) {
         this.makeNut();
       }
 
@@ -139,16 +137,13 @@ export default class Scene2 extends Phaser.Scene {
   }
 
   death() {
-    console.log("csor");
     this.physics.pause();
     this.player.setTint(0xff0000);
     this.player.anims.play("rightJump");
     this.deathSound.play();
     this.gameOver = true;
     clearInterval(this.timer);
-    this.scene.score = this.score;
-
-    if (localStorage.getItem("score")) {
+    if (localStorage.getItem("score") != undefined) {
       if (localStorage.getItem("score") < this.score) {
         localStorage.setItem("score", this.score);
       }
