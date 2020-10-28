@@ -145,7 +145,15 @@ export default class Scene2 extends Phaser.Scene {
     this.deathSound.play();
     this.gameOver = true;
     clearInterval(this.timer);
+    this.scene.score = this.score;
 
+    if (localStorage.getItem("score")) {
+      if (localStorage.getItem("score") < this.score) {
+        localStorage.setItem("score", this.score);
+      }
+    } else {
+      localStorage.setItem("score", this.score);
+    }
     this.scene.start("score");
   }
   makeNut() {

@@ -4,6 +4,7 @@ export default class Scene3 extends Phaser.Scene {
   }
 
   create() {
+    console.log(this.scene);
     this.add.text(220, 100, "Prohrál jsi", {
       fill: "#ffffff",
       font: "55px Arial",
@@ -24,13 +25,13 @@ export default class Scene3 extends Phaser.Scene {
 
   enterButtonActiveState() {
     console.log(localStorage.getItem("score"));
-    if (localStorage.getItem("score")) {
+    /*  if (localStorage.getItem("score")) {
       if (localStorage.getItem("score") < this.score) {
         localStorage.setItem("score", this.score);
       }
     } else {
       localStorage.setItem("score", this.score);
-    }
+    } */
 
     window.location.reload(false);
   }
